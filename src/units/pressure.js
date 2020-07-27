@@ -34,6 +34,13 @@ const pressure = {
       },
       to_anchor: 1 / 10
     },
+    mbar: {
+      name: {
+        singular: 'millibar',
+        plural: 'millibars'
+      },
+      to_anchor: 1 / 10
+    },
     bar: {
       name: {
         singular: 'bar',
@@ -41,12 +48,26 @@ const pressure = {
       },
       to_anchor: 100
     },
+    mmHg: {
+      name: {
+        singular: 'mm Hg',
+        plural: 'mm Hg'
+      },
+      to_anchor: 0.13332239
+    },
     torr: {
       name: {
         singular: 'torr',
         plural: 'torr'
       },
       to_anchor: 101325 / 760000
+    },
+    inHg: {
+      name: {
+        singular: 'inch Hg',
+        plural: 'inches Hg'
+      },
+      to_anchor: 3.38639
     }
   },
 

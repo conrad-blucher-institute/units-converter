@@ -1,7 +1,7 @@
 {
-  "name": "units-converter",
-  "version": "1.0.3",
-  "description": "A simple utility library to measure and convert between units",
+  "name": "cbi-units-converter",
+  "version": "0.0.1",
+  "description": "Forked from units-converter. A simple utility library to measure and convert between units",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "browser": "dist/umd/index.min.js",
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nosferatoy/units-converter"
+    "url": "https://github.com/conrad-blucher-institute/units-converter"
   },
   "scripts": {
     "build": "rollup -c",
@@ -38,8 +38,8 @@
     ]
   },
   "author": {
-    "name": "Georgios Papageorgiou",
-    "email": "giorgospapa86@gmail.com"
+    "name": "Son Nguyen, Henry Reeves",
+    "email": "son.nguyen@tamucc.edu"
   },
   "license": "MIT",
   "type": "module",
