@@ -26,6 +26,20 @@ const voltage = {
         plural: 'Kilovolts'
       },
       to_anchor: 1000
+    },
+    pharosV: {
+      name: {
+        singular: '.1 volt',
+        plural: '.1 volts'
+      },
+      to_anchor: 0.1
+    },
+    pharosMV: {
+      name: {
+        singular: '1 millivolt',
+        plural: '1 millivolts'
+      },
+      to_anchor: 0.001
     }
   }
 }
