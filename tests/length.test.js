@@ -85,3 +85,7 @@ test('km to nMi', () => {
 test('fathom to m', () => {
   expect(percentError(1.8288, length(1).from('fathom').to('m').value)).toBeLessThanOrEqual(ACCURACY)
 })
+
+test('pharosMm to m', () => {
+  expect(length(1).from('pharosMm').to('m').value).toEqual(0.0001)
+})
