@@ -31,7 +31,11 @@ test('kPa to bar', () => {
 })
 
 test('kPa to mbar', () => {
-  expect(pressure(6000).from('kPa').to('bar').value).toEqual(60000)
+  expect(pressure(1).from('kPa').to('mbar').value).toEqual(10)
+})
+
+test('.1 millibars to mbar', () => {
+  expect(pressure(10).from('.1 millibars').to('mbar').value).toEqual(1)
 })
 
 test('kPa to mmHg', () => {

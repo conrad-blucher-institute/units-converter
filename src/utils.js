@@ -17,7 +17,7 @@ Converter.prototype.from = function (from) {
   return this
 }
 
-Converter.prototype.to = function (to) {
+Converter.prototype.to = function (to, precision = null) {
   if (!this.origin) { throw new Error('.to must be called after .from') }
 
   this.destination = this.getUnit(to)
@@ -46,7 +46,13 @@ Converter.prototype.to = function (to) {
     result += this.destination.unit.anchor_shift
   }
 
-  return Object.assign({ value: result / this.destination.unit.to_anchor }, this.describe(this.destination.abbr))
+  result = result / this.destination.unit.to_anchor
+
+  if (precision) {
+    result = +result.toFixed(precision) // Rounding number to percise value
+  }
+
+  return Object.assign({ value: result }, this.describe(this.destination.abbr))
 }
 
 Converter.prototype.toBest = function (options) {

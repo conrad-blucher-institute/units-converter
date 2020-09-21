@@ -6,12 +6,19 @@ const sound = {
   metric: {
     baseUnit: 'db',
     transform: (val) => { return val * RATIO },
-    db: {
+    dB: {
       name: {
         singular: 'Decibel',
         plural: 'Decibels'
       },
       to_anchor: 1
+    },
+    B: {
+      name: {
+        singular: 'Bel',
+        plural: 'Bels'
+      },
+      to_anchor: 10
     },
     pharosDb: {
       name: {

@@ -24,8 +24,8 @@ const salinity = {
     },
     uS: {
       name: {
-        singular: 'microSiemens per centimetre',
-        plural: 'microSiemens per centimetres',
+        singular: 'microSiemen/cm',
+        plural: 'microSiemens/cm',
         abbreviation: 'uS/cm'
 
       },

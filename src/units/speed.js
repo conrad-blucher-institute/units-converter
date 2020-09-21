@@ -6,6 +6,20 @@ const speed = {
   metric: {
     baseUnit: 'N',
     transform: (val) => { return val * 1 / RATIO },
+    'mm/s': {
+      name: {
+        singular: 'Millimetre per second',
+        plural: 'Millimeters per second'
+      },
+      to_anchor: 0.0036
+    },
+    '.1 m/s': {
+      name: {
+        singular: '.1 Metre per second',
+        plural: '.1 Metres per second'
+      },
+      to_anchor: 0.36
+    },
     'm/s': {
       name: {
         singular: 'Metre per second',
