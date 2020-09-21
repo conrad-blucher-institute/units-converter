@@ -5,6 +5,7 @@ import { terser } from 'rollup-plugin-terser'
 const utils = path.resolve(__dirname, 'src/utils.js')
 
 const acceleration = path.resolve(__dirname, 'src/units/acceleration.js')
+const allUnits = path.resolve(__dirname, 'src/units/allUnits.js')
 const angle = path.resolve(__dirname, 'src/units/angle.js')
 const apparentPower = path.resolve(__dirname, 'src/units/apparentPower.js')
 const area = path.resolve(__dirname, 'src/units/area.js')
@@ -24,6 +25,8 @@ const power = path.resolve(__dirname, 'src/units/power.js')
 const pressure = path.resolve(__dirname, 'src/units/pressure.js')
 const reactiveEnergy = path.resolve(__dirname, 'src/units/reactiveEnergy.js')
 const reactivePower = path.resolve(__dirname, 'src/units/reactivePower.js')
+const salinity = path.resolve(__dirname, 'src/units/salinity.js')
+const sound = path.resolve(__dirname, 'src/units/sound.js')
 const speed = path.resolve(__dirname, 'src/units/speed.js')
 const temperature = path.resolve(__dirname, 'src/units/temperature.js')
 const time = path.resolve(__dirname, 'src/units/time.js')
@@ -37,6 +40,14 @@ export default [
     output: [
       { name: 'acceleration', file: 'dist/es/units/acceleration.js', format: 'es' },
       { name: 'acceleration', file: 'dist/cjs/units/acceleration.js', format: 'cjs' }
+    ],
+    external: [utils]
+  },
+  {
+    input: 'src/units/allUnits.js',
+    output: [
+      { name: 'allUnits', file: 'dist/es/units/allUnits.js', format: 'es' },
+      { name: 'allUnits', file: 'dist/cjs/units/allUnits.js', format: 'cjs' }
     ],
     external: [utils]
   },
@@ -193,6 +204,22 @@ export default [
     external: [utils]
   },
   {
+    input: 'src/units/salinity.js',
+    output: [
+      { name: 'salinity', file: 'dist/es/units/salinity.js', format: 'es' },
+      { name: 'salinity', file: 'dist/cjs/units/salinity.js', format: 'cjs' }
+    ],
+    external: [utils]
+  },
+  {
+    input: 'src/units/sound.js',
+    output: [
+      { name: 'sound', file: 'dist/es/units/sound.js', format: 'es' },
+      { name: 'sound', file: 'dist/cjs/units/sound.js', format: 'cjs' }
+    ],
+    external: [utils]
+  },
+  {
     input: 'src/units/speed.js',
     output: [
       { name: 'speed', file: 'dist/es/units/speed.js', format: 'es' },
@@ -253,9 +280,9 @@ export default [
       { file: pkg.main, format: 'cjs' },
       { file: pkg.module, format: 'es' }
     ],
-    external: [acceleration, angle, apparentPower, area, charge, current, digital, each, energy, force, frequency,
-      illuminance, length, mass, pace, partsPer, power, pressure, reactiveEnergy, reactivePower, speed, temperature,
-      time, voltage, volume, volumeFlowRate]
+    external: [acceleration, allUnits, angle, apparentPower, area, charge, current, digital, each, energy, force, frequency,
+      illuminance, length, mass, pace, partsPer, power, pressure, reactiveEnergy, reactivePower, salinity, sound, speed,
+      temperature, time, voltage, volume, volumeFlowRate]
   },
   {
     input: 'src/index.js',

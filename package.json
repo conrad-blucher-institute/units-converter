@@ -20,7 +20,7 @@
     "url": "https://github.com/conrad-blucher-institute/units-converter"
   },
   "scripts": {
-    "build": "rollup -c -w && npm publish",
+    "build": "rollup -c && npm publish",
     "dev": "rollup -c -w",
     "test": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage",
     "lint": "eslint '**/*.js' --fix",

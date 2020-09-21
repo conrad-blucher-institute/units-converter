@@ -1,4 +1,5 @@
 export { default as acceleration } from './units/acceleration.js'
+export { default as allUnits } from './units/allUnits.js'
 export { default as angle } from './units/angle.js'
 export { default as apparentPower } from './units/apparentPower.js'
 export { default as area } from './units/area.js'
