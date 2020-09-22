@@ -15,3 +15,33 @@ test('random to ra', () => {
   }
   expect(convert).toThrowError(/Cannot find unit/)
 })
+
+test('find possibilites with nothin', () => {
+  function findPossibilities () {
+    allUnits.findPossibilities('nothin')
+  }
+  expect(findPossibilities).toThrowError(/Cannot find unit/)
+})
+
+test('find possibilites with in', () => {
+  expect(allUnits.findPossibilities('in')).toBeDefined()
+})
+
+test('get length library and do conversion', () => {
+  const unit = allUnits.getLibrary('in', 'ft')
+  expect(unit(12).from('in').to('ft').value).toEqual(1)
+})
+
+test('can\'t find library', () => {
+  function getLibrary () {
+    allUnits.getLibrary('nothinlol')
+  }
+  expect(getLibrary).toThrowError(/Cannot find unit/)
+})
+
+test('not enough parameters getLibrary', () => {
+  function getLibrary () {
+    allUnits.getLibrary()
+  }
+  expect(getLibrary).toThrowError(/One arguement must/)
+})

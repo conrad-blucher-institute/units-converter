@@ -52,6 +52,54 @@ const allUnits = {
     }
 
     return unitObj(value).from(from).to(to, precision)
+  },
+
+  /**
+   * Gets the possibilities from unit library
+   *
+   * @param {string} [from=null] in, ft, mm, kg, etc
+  */
+  findPossibilities: (from) => {
+    const unitObj = allUnits.units.find((unit) => {
+      return unit().getUnit(from)
+    })
+
+    if (!unitObj) {
+      throw new Error(`Cannot find unit object with from: ${from}`)
+    }
+
+    return unitObj().from(from).possibilities()
+  },
+
+  /**
+   * Gets a unit library based on from and/or to
+   *
+   * @param {string} [from=null] in, ft, mm, kg, etc
+   * @param {string} [to=null] in, ft, mm, kg, etc
+  */
+  getLibrary: (from = null, to = null) => {
+    if (!from && !to) {
+      throw new Error(`One arguement must be defined, from: ${from}, to: ${to}`)
+    }
+
+    const unitLibrary = allUnits.units.find((unit) => {
+      let conditions = []
+      if (unit().getUnit(from)) {
+        conditions.push(true)
+      }
+
+      if (unit().getUnit(to)) {
+        conditions.push(true)
+      }
+
+      return conditions.length > 0
+    })
+
+    if (!unitLibrary) {
+      throw new Error(`Cannot find unit object that has ${to} as to and ${from} as from`)
+    }
+
+    return unitLibrary
   }
 }
 

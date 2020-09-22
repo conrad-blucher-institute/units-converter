@@ -1,6 +1,6 @@
 {
   "name": "cbi-units-converter",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Forked from units-converter. A simple utility library to measure and convert between units",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
