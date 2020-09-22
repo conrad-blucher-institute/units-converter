@@ -48,7 +48,7 @@ const allUnits = {
     })
 
     if (!unitObj) {
-      throw new Error(`Cannot find unit object that has ${to} as to and ${from} as from`)
+      throw new Error(`Cannot find unit object that has to: ${to} and from: ${from}`)
     }
 
     return unitObj(value).from(from).to(to, precision)
@@ -96,7 +96,7 @@ const allUnits = {
     })
 
     if (!unitLibrary) {
-      throw new Error(`Cannot find unit object that has ${to} as to and ${from} as from`)
+      throw new Error(`Cannot find unit object that has to: ${to} and from: ${from}`)
     }
 
     return unitLibrary

@@ -45,3 +45,7 @@ test('not enough parameters getLibrary', () => {
   }
   expect(getLibrary).toThrowError(/One arguement must/)
 })
+
+test('get library .1 degC', () => {
+  expect(allUnits.getLibrary('.1 degC')).toBeDefined()
+})

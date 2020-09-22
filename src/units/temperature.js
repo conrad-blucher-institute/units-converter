@@ -20,7 +20,7 @@ const temperature = {
       to_anchor: 1,
       anchor_shift: 273.15
     },
-    pharosC: {
+    '.1 degC': {
       name: {
         singular: '.1 degC',
         plural: '.1 degCs'
