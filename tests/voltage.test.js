@@ -36,18 +36,18 @@ test('kV to V', () => {
   expect(voltage(1).from('kV').to('V').value).toEqual(1000)
 })
 
-test('V to pharosV', () => {
-  expect(voltage(1).from('V').to('pharosV').value).toEqual(10)
+test('V to .1 volt', () => {
+  expect(voltage(1).from('V').to('.1 volt').value).toEqual(10)
 })
 
-test('pharosV to V', () => {
-  expect(voltage(10).from('pharosV').to('V').value).toEqual(1)
+test('.1 volt to V', () => {
+  expect(voltage(10).from('.1 volt').to('V').value).toEqual(1)
 })
 
-test('V to pharosMV', () => {
-  expect(voltage(1).from('V').to('pharosMV').value).toEqual(1000)
+test('V to 1 millivolt', () => {
+  expect(voltage(1).from('V').to('1 millivolt').value).toEqual(1000)
 })
 
-test('pharosMV to V', () => {
-  expect(voltage(1000).from('pharosMV').to('V').value).toEqual(1)
+test('1 millivolt to V', () => {
+  expect(voltage(1000).from('1 millivolt').to('V').value).toEqual(1)
 })

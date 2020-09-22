@@ -20,7 +20,7 @@ const sound = {
       },
       to_anchor: 10
     },
-    pharosDb: {
+    '.43 decibel': {
       name: {
         singular: '.43 decibel',
         plural: '.43 decibels'

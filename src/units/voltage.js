@@ -27,14 +27,14 @@ const voltage = {
       },
       to_anchor: 1000
     },
-    pharosV: {
+    '.1 volt': {
       name: {
         singular: '.1 volt',
         plural: '.1 volts'
       },
       to_anchor: 0.1
     },
-    pharosMV: {
+    '1 millivolt': {
       name: {
         singular: '1 millivolt',
         plural: '1 millivolts'

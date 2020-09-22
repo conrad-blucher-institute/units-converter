@@ -12,10 +12,10 @@ test('dB to B', () => {
   expect(sound(1).from('dB').to('B').value).toEqual(0.1)
 })
 
-test('dB to pharosDb', () => {
-  expect(sound(0.43).from('dB').to('pharosDb').value).toEqual(1)
+test('dB to .43 decibel', () => {
+  expect(sound(0.43).from('dB').to('.43 decibel').value).toEqual(1)
 })
 
-test('pharosDb to dB', () => {
-  expect(sound(1).from('pharosDb').to('dB').value).toEqual(0.43)
+test('.43 decibel to dB', () => {
+  expect(sound(1).from('.43 decibel').to('dB').value).toEqual(0.43)
 })

@@ -34,7 +34,7 @@ const length = {
       },
       to_anchor: 1000
     },
-    pharosMm: {
+    '.1 mm': {
       name: {
         singular: '.1 mm',
         plural: '.1 mm'
