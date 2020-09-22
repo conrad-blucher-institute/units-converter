@@ -43,11 +43,36 @@ const salinity = {
       name: {
         singular: 'parts per million',
         plural: 'parts per million',
-        abbreviation: 'ppm*'
+        abbreviation: 'ppm'
       },
       to_anchor: 1 / 640
     },
-    pharosMicroSiemens: {
+    ppt: {
+      name: {
+        singular: 'parts per thousand',
+        plural: 'parts per thousand',
+        abbreviation: 'ppt'
+      },
+      to_anchor: 1000 / 640
+    },
+    // psu and ppt are about the same
+    psu: {
+      name: {
+        singular: 'practical salinity unit',
+        plural: 'practical salinity units',
+        abbreviation: 'psu'
+      },
+      to_anchor: 1000 / 640
+    },
+    '.1 psu': {
+      name: {
+        singular: '.1 practical salinity unit',
+        plural: '.1 practical salinity units',
+        abbreviation: '.1 psu'
+      },
+      to_anchor: (1000 / 640) / 10
+    },
+    '10 microSiemen/cm': {
       name: {
         singular: '10 microSiemen/cm',
         plural: '10 microSiemen/cm',

@@ -16,10 +16,22 @@ test('ppm to dS', () => {
   expect(salinity(640).from('ppm').to('dS').value).toEqual(1)
 })
 
-test('pharosMicroSiemens to dS', () => {
-  expect(salinity(10000).from('pharosMicroSiemens').to('dS').value).toEqual(1)
+test('ppm to ppt', () => {
+  expect(salinity(1000).from('ppm').to('ppt').value).toEqual(1)
 })
 
-test('pharosMicroSiemens to uS', () => {
-  expect(salinity(10000).from('pharosMicroSiemens').to('uS').value).toEqual(1000)
+test('psu to ppt', () => {
+  expect(salinity(1000).from('psu').to('ppt').value).toEqual(1000)
+})
+
+test('.1 psu to psu', () => {
+  expect(salinity(1).from('.1 psu').to('psu').value).toEqual(0.1)
+})
+
+test('10 microSiemen/cm to dS', () => {
+  expect(salinity(10000).from('10 microSiemen/cm').to('dS').value).toEqual(1)
+})
+
+test('10 microSiemen/cm to uS', () => {
+  expect(salinity(10000).from('10 microSiemen/cm').to('uS').value).toEqual(1000)
 })
