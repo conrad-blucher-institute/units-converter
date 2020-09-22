@@ -27,7 +27,7 @@ const voltage = {
       },
       to_anchor: 1000
     },
-    '.1 volt': {
+    '.1 volts': {
       name: {
         singular: '.1 volt',
         plural: '.1 volts'

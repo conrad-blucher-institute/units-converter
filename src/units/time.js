@@ -77,7 +77,7 @@ const time = {
       },
       to_anchor: 60 * 60 * 24 * daysInYear
     },
-    pharosSec: {
+    '.1 sec': {
       name: {
         singular: '.1 sec',
         plural: '.1 secs'

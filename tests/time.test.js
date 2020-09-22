@@ -58,6 +58,6 @@ test('week to year', () => {
   expect(percentError(1, time(52.17857).from('week').to('year').value)).toBeLessThanOrEqual(ACCURACY)
 })
 
-test('s to pharosSec', () => {
-  expect(time(1).from('s').to('pharosSec').value).toEqual(10)
+test('s to .1 sec', () => {
+  expect(time(1).from('s').to('.1 sec').value).toEqual(10)
 })

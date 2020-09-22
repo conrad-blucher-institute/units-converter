@@ -36,12 +36,12 @@ test('kV to V', () => {
   expect(voltage(1).from('kV').to('V').value).toEqual(1000)
 })
 
-test('V to .1 volt', () => {
-  expect(voltage(1).from('V').to('.1 volt').value).toEqual(10)
+test('V to .1 volts', () => {
+  expect(voltage(1).from('V').to('.1 volts').value).toEqual(10)
 })
 
-test('.1 volt to V', () => {
-  expect(voltage(10).from('.1 volt').to('V').value).toEqual(1)
+test('.1 volts to V', () => {
+  expect(voltage(10).from('.1 volts').to('V').value).toEqual(1)
 })
 
 test('V to 1 millivolt', () => {

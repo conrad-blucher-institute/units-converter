@@ -13,7 +13,7 @@ const light = {
       },
       to_anchor: 1
     },
-    pharosNtu: {
+    '.1 ntu': {
       name: {
         singular: '.1 ntu',
         plural: '.1 ntu'

@@ -1,9 +1,9 @@
 import { light } from '../src/index.js'
 
-test('ntu to pharosNtu', () => {
-  expect(light(1).from('ntu').to('pharosNtu').value).toEqual(10)
+test('ntu to .1 ntu', () => {
+  expect(light(1).from('ntu').to('.1 ntu').value).toEqual(10)
 })
 
-test('pharosNtu to ntu', () => {
-  expect(light(10).from('pharosNtu').to('ntu').value).toEqual(1)
+test('.1 ntu to ntu', () => {
+  expect(light(10).from('.1 ntu').to('ntu').value).toEqual(1)
 })
