@@ -287,4 +287,37 @@ describe('Test the possibilities', () => {
       plural: '.1 m/s'
     })
   })
+
+  test('best using system option', () => {
+    expect(converter.length(123.2221547).from('mm').toBest({ precision: 2, system: 'imperial' })).toEqual({
+      plural: 'Inches',
+      singular: 'Inch',
+      system: 'imperial',
+      unit: 'in',
+      value: 4.85
+    })
+  })
+
+  test('get systems for length', () => {
+    expect(converter.length(123.2221547).getSystems()).toEqual(['metric', 'imperial'])
+  })
+
+  test('toBestAllSystems with length', () => {
+    expect(converter.length(123.2221547).from('mm').toBestAllSystems({ precision: 2 })).toEqual({
+      'imperial': {
+        'plural': 'Inches',
+        'singular': 'Inch',
+        'system': 'imperial',
+        'unit': 'in',
+        'value': 4.85
+      },
+      'metric': {
+        'plural': 'Centimeters',
+        'singular': 'Centimeter',
+        'system': 'metric',
+        'unit': 'cm',
+        'value': 12.32
+      }
+    })
+  })
 })

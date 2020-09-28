@@ -55,17 +55,43 @@ Converter.prototype.to = function (to, precision = null) {
   return Object.assign({ value: result }, this.describe(this.destination.abbr))
 }
 
+Converter.prototype.toBestAllSystems = function (options) {
+  if (!this.origin) { throw new Error('.toBestAllSystems must be called after .from') }
+
+  options = Object.assign({
+    exclude: [],
+    cutOffNumber: 1,
+    percision: null,
+    system: null
+  }, options)
+
+  const systems = this.getSystems()
+  const resultObj = {}
+  systems.forEach(system => {
+    options.system = system
+    resultObj[system] = this.toBest(options)
+  })
+
+  return resultObj
+}
+
 Converter.prototype.toBest = function (options) {
   if (!this.origin) { throw new Error('.toBest must be called after .from') }
 
   options = Object.assign({
     exclude: [],
     cutOffNumber: 1,
-    percision: null
+    percision: null,
+    system: null
   }, options)
 
   const list = this.list()
-    .filter(item => !options.exclude.includes(item.unit) && this.describe(item.unit).system === this.origin.system)
+    .filter(item => {
+      if (!options.system) {
+        return !options.exclude.includes(item.unit) && this.describe(item.unit).system === this.origin.system
+      }
+      return !options.exclude.includes(item.unit) && options.system === this.describe(item.unit).system
+    })
     .reduce((acc, item) => {
       const result = this.to(item.unit)
       if (!acc || (result.value >= options.cutOffNumber && result.value < acc.value)) {
@@ -123,6 +149,10 @@ Converter.prototype.possibilities = function () {
     .map(systemName => {
       return Object.keys(this.definitions[systemName]).splice(2)
     }))
+}
+
+Converter.prototype.getSystems = function () {
+  return Object.keys(this.definitions)
 }
 
 export default function converter (definitions) {
