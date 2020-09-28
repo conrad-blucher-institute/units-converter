@@ -60,10 +60,11 @@ Converter.prototype.toBest = function (options) {
 
   options = Object.assign({
     exclude: [],
-    cutOffNumber: 1
+    cutOffNumber: 1,
+    percision: null
   }, options)
 
-  return this.list()
+  const list = this.list()
     .filter(item => !options.exclude.includes(item.unit) && this.describe(item.unit).system === this.origin.system)
     .reduce((acc, item) => {
       const result = this.to(item.unit)
@@ -73,6 +74,12 @@ Converter.prototype.toBest = function (options) {
         return acc
       }
     }, undefined)
+
+  if (options.precision) {
+    list.value = +list.value.toFixed(options.precision) // Rounding number to percise value
+  }
+
+  return list
 }
 
 Converter.prototype.getUnit = function (abbr) {

@@ -277,4 +277,14 @@ describe('Test the possibilities', () => {
     const expected = ['g-force', 'm/s2']
     expect(converter.acceleration().possibilities()).toEqual(expected)
   })
+
+  test('best mm with excludes measurements km and m precision', () => {
+    expect(converter.length(123.2221547).from('mm').toBest({ exclude: ['km', 'm'], precision: 2 })).toEqual({
+      value: 1.23,
+      unit: 'ms',
+      system: 'metric',
+      singular: '.1 m/s',
+      plural: '.1 m/s'
+    })
+  })
 })
