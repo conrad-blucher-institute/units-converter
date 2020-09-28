@@ -40,20 +40,6 @@ const length = {
         plural: '.1 mm'
       },
       to_anchor: 1 / 10000
-    },
-    mms: {
-      name: {
-        singular: 'mm/s',
-        plural: 'mm/s'
-      },
-      to_anchor: 1 / 1000
-    },
-    ms: {
-      name: {
-        singular: '.1 m/s',
-        plural: '.1 m/s'
-      },
-      to_anchor: 1 / 10
     }
   },
   imperial: {
