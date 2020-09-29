@@ -36,10 +36,10 @@ test('R to K', () => {
   expect(temperature(459.67).from('R').to('K').value).toEqual(255.3722222222222)
 })
 
-test('pharosC to C', () => {
-  expect(temperature(10).from('pharosC').to('C').value).toEqual(1)
+test('.1 degC to C', () => {
+  expect(temperature(10).from('.1 degC').to('C').value).toEqual(1)
 })
 
-test('C to pharosC', () => {
-  expect(temperature(1).from('C').to('pharosC').value).toEqual(10)
+test('C to .1 degC', () => {
+  expect(temperature(1).from('C').to('.1 degC').value).toEqual(10)
 })
