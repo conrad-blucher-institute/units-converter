@@ -1,9 +1,8 @@
 {
   "name": "cbi-units-converter",
-  "version": "0.0.15",
+  "version": "0.0.18",
   "description": "Forked from units-converter. A simple utility library to measure and convert between units",
   "main": "dist/cjs/index.js",
-  "module": "dist/es/index.js",
   "browser": "dist/umd/index.min.js",
   "keywords": [
     "units",
@@ -42,7 +41,6 @@
     "email": "son.nguyen@tamucc.edu"
   },
   "license": "MIT",
-  "type": "module",
   "devDependencies": {
     "@babel/preset-env": "^7.4.5",
     "agadoo": "^1.0.1",
