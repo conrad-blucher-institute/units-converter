@@ -35,3 +35,19 @@ test('mV to V', () => {
 test('kV to V', () => {
   expect(voltage(1).from('kV').to('V').value).toEqual(1000)
 })
+
+test('V to .1 volts', () => {
+  expect(voltage(1).from('V').to('.1 volts').value).toEqual(10)
+})
+
+test('.1 volts to V', () => {
+  expect(voltage(10).from('.1 volts').to('V').value).toEqual(1)
+})
+
+test('V to 1 millivolt', () => {
+  expect(voltage(1).from('V').to('1 millivolt').value).toEqual(1000)
+})
+
+test('1 millivolt to V', () => {
+  expect(voltage(1000).from('1 millivolt').to('V').value).toEqual(1)
+})

@@ -34,6 +34,13 @@ const pressure = {
       },
       to_anchor: 1 / 10
     },
+    '.1 millibars': {
+      name: {
+        singular: '.1 millibar',
+        plural: '.1 millibars'
+      },
+      to_anchor: 1 / 100
+    },
     mbar: {
       name: {
         singular: 'millibar',

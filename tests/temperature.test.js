@@ -35,3 +35,11 @@ test('R to C', () => {
 test('R to K', () => {
   expect(temperature(459.67).from('R').to('K').value).toEqual(255.3722222222222)
 })
+
+test('.1 degC to C', () => {
+  expect(temperature(10).from('.1 degC').to('C').value).toEqual(1)
+})
+
+test('C to .1 degC', () => {
+  expect(temperature(1).from('C').to('.1 degC').value).toEqual(10)
+})

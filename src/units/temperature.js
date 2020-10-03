@@ -19,6 +19,14 @@ const temperature = {
       },
       to_anchor: 1,
       anchor_shift: 273.15
+    },
+    '.1 degC': {
+      name: {
+        singular: '.1 degC',
+        plural: '.1 degCs'
+      },
+      to_anchor: 0.1,
+      anchor_shift: 0
     }
   },
   imperial: {

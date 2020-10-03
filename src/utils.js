@@ -17,7 +17,7 @@ Converter.prototype.from = function (from) {
   return this
 }
 
-Converter.prototype.to = function (to) {
+Converter.prototype.to = function (to, precision = null) {
   if (!this.origin) { throw new Error('.to must be called after .from') }
 
   this.destination = this.getUnit(to)
@@ -46,7 +46,33 @@ Converter.prototype.to = function (to) {
     result += this.destination.unit.anchor_shift
   }
 
-  return Object.assign({ value: result / this.destination.unit.to_anchor }, this.describe(this.destination.abbr))
+  result = result / this.destination.unit.to_anchor
+
+  if (precision) {
+    result = +result.toFixed(precision) // Rounding number to percise value
+  }
+
+  return Object.assign({ value: result }, this.describe(this.destination.abbr))
+}
+
+Converter.prototype.toBestAllSystems = function (options) {
+  if (!this.origin) { throw new Error('.toBestAllSystems must be called after .from') }
+
+  options = Object.assign({
+    exclude: [],
+    cutOffNumber: 1,
+    percision: null,
+    system: null
+  }, options)
+
+  const systems = this.getSystems()
+  const resultObj = {}
+  systems.forEach(system => {
+    options.system = system
+    resultObj[system] = this.toBest(options)
+  })
+
+  return resultObj
 }
 
 Converter.prototype.toBest = function (options) {
@@ -54,11 +80,18 @@ Converter.prototype.toBest = function (options) {
 
   options = Object.assign({
     exclude: [],
-    cutOffNumber: 1
+    cutOffNumber: 1,
+    percision: null,
+    system: null
   }, options)
 
-  return this.list()
-    .filter(item => !options.exclude.includes(item.unit) && this.describe(item.unit).system === this.origin.system)
+  const list = this.list()
+    .filter(item => {
+      if (!options.system) {
+        return !options.exclude.includes(item.unit) && this.describe(item.unit).system === this.origin.system
+      }
+      return !options.exclude.includes(item.unit) && options.system === this.describe(item.unit).system
+    })
     .reduce((acc, item) => {
       const result = this.to(item.unit)
       if (!acc || (result.value >= options.cutOffNumber && result.value < acc.value)) {
@@ -67,6 +100,12 @@ Converter.prototype.toBest = function (options) {
         return acc
       }
     }, undefined)
+
+  if (options.precision) {
+    list.value = +list.value.toFixed(options.precision) // Rounding number to percise value
+  }
+
+  return list
 }
 
 Converter.prototype.getUnit = function (abbr) {
@@ -110,6 +149,10 @@ Converter.prototype.possibilities = function () {
     .map(systemName => {
       return Object.keys(this.definitions[systemName]).splice(2)
     }))
+}
+
+Converter.prototype.getSystems = function () {
+  return Object.keys(this.definitions)
 }
 
 export default function converter (definitions) {

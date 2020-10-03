@@ -149,7 +149,7 @@ describe('Test the possibilities', () => {
   })
 
   test('m possibilities', () => {
-    const expected = ['mm', 'cm', 'm', 'km', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi']
+    const expected = ['mm', 'cm', 'm', 'km', '.1 mm', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi']
     expect(converter.length().from('m').possibilities()).toEqual(expected)
   })
 
@@ -174,17 +174,17 @@ describe('Test the possibilities', () => {
   })
 
   test('length possibilities', () => {
-    const expected = ['mm', 'cm', 'm', 'km', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi']
+    const expected = ['mm', 'cm', 'm', 'km', '.1 mm', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi']
     expect(converter.length().possibilities()).toEqual(expected)
   })
 
   test('temperature possibilities', () => {
-    const expected = ['C', 'K', 'F', 'R']
+    const expected = ['C', 'K', '.1 degC', 'F', 'R']
     expect(converter.temperature().possibilities()).toEqual(expected)
   })
 
   test('time possibilities', () => {
-    const expected = ['ns', 'mu', 'ms', 's', 'min', 'h', 'd', 'week', 'month', 'year']
+    const expected = ['ns', 'mu', 'ms', 's', 'min', 'h', 'd', 'week', 'month', 'year', '.1 sec']
     expect(converter.time().possibilities()).toEqual(expected)
   })
 
@@ -199,12 +199,12 @@ describe('Test the possibilities', () => {
   })
 
   test('pressure possibilities', () => {
-    const expected = ['Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi']
+    const expected = ['Pa', 'kPa', 'MPa', 'hPa', '.1 millibars', 'mbar', 'bar', 'mmHg', 'torr', 'inHg', 'psi', 'ksi']
     expect(converter.pressure().possibilities()).toEqual(expected)
   })
 
   test('speed possibilities', () => {
-    const expected = ['m/s', 'km/h', 'm/h', 'knot', 'ft/s']
+    const expected = ['mm/s', '.1 m/s', 'm/s', 'km/h', 'm/h', 'knot', 'ft/s']
     expect(converter.speed().possibilities()).toEqual(expected)
   })
 
@@ -219,7 +219,7 @@ describe('Test the possibilities', () => {
   })
 
   test('voltage possibilities', () => {
-    const expected = ['V', 'mV', 'kV']
+    const expected = ['V', 'mV', 'kV', '.1 volts', '1 millivolt']
     expect(converter.voltage().possibilities()).toEqual(expected)
   })
 
@@ -276,5 +276,48 @@ describe('Test the possibilities', () => {
   test('acceleration possibilities', () => {
     const expected = ['g-force', 'm/s2']
     expect(converter.acceleration().possibilities()).toEqual(expected)
+  })
+
+  test('best mm with excludes measurements km and m with precision', () => {
+    expect(converter.length(123.2221547).from('mm').toBest({ exclude: ['km', 'm'], precision: 2 })).toEqual({
+      plural: 'Centimeters',
+      singular: 'Centimeter',
+      system: 'metric',
+      unit: 'cm',
+      value: 12.32
+    })
+  })
+
+  test('best using system option', () => {
+    expect(converter.length(123.2221547).from('mm').toBest({ precision: 2, system: 'imperial' })).toEqual({
+      plural: 'Inches',
+      singular: 'Inch',
+      system: 'imperial',
+      unit: 'in',
+      value: 4.85
+    })
+  })
+
+  test('get systems for length', () => {
+    expect(converter.length(123.2221547).getSystems()).toEqual(['metric', 'imperial'])
+  })
+
+  test('toBestAllSystems with length', () => {
+    expect(converter.length(123.2221547).from('mm').toBestAllSystems({ precision: 2 })).toEqual({
+      'imperial': {
+        'plural': 'Inches',
+        'singular': 'Inch',
+        'system': 'imperial',
+        'unit': 'in',
+        'value': 4.85
+      },
+      'metric': {
+        'plural': 'Centimeters',
+        'singular': 'Centimeter',
+        'system': 'metric',
+        'unit': 'cm',
+        'value': 12.32
+      }
+    })
   })
 })

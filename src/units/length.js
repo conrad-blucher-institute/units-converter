@@ -33,6 +33,13 @@ const length = {
         plural: 'Kilometers'
       },
       to_anchor: 1000
+    },
+    '.1 mm': {
+      name: {
+        singular: '.1 mm',
+        plural: '.1 mm'
+      },
+      to_anchor: 1 / 10000
     }
   },
   imperial: {

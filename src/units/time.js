@@ -76,6 +76,13 @@ const time = {
         plural: 'Years'
       },
       to_anchor: 60 * 60 * 24 * daysInYear
+    },
+    '.1 sec': {
+      name: {
+        singular: '.1 sec',
+        plural: '.1 secs'
+      },
+      to_anchor: 1 / 10
     }
   }
 }

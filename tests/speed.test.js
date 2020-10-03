@@ -14,6 +14,22 @@ test('m/s to km/h', () => {
   expect(speed(1).from('m/s').to('km/h').value).toEqual(3.6)
 })
 
+test('.1 m/s to km/h', () => {
+  expect(speed(1).from('.1 m/s').to('km/h').value).toEqual(0.36)
+})
+
+test('km/h to .1 m/s', () => {
+  expect(speed(0.36).from('km/h').to('.1 m/s').value).toEqual(1)
+})
+
+test('mm/s to km/h', () => {
+  expect(speed(1).from('mm/s').to('km/h').value).toEqual(0.0036)
+})
+
+test('km/h to mm/s', () => {
+  expect(speed(0.0036).from('km/h').to('mm/s').value).toEqual(1)
+})
+
 test('m/h to m/h', () => {
   expect(speed(6).from('m/h').to('m/h').value).toEqual(6)
 })
